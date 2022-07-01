@@ -1,7 +1,3 @@
-# Interactive Map Website
-
-Interactivre mapping
-
 <iframe id="inlineFrameExample"
     title="Inline Frame Example"
     width="300"
