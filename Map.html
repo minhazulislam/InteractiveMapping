@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_844d426b7c0136e96a8e1aea39eebe2e {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_844d426b7c0136e96a8e1aea39eebe2e" ></div>
+        
+</body>
+<script>    
+    
+            var map_844d426b7c0136e96a8e1aea39eebe2e = L.map(
+                "map_844d426b7c0136e96a8e1aea39eebe2e",
+                {
+                    center: [31.409248105000046, -95.82539201899996],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+            L.control.scale().addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+
+            
+
+        
+    
+            var tile_layer_7d3e21d389667555d96f2b46b6517302 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+            map_844d426b7c0136e96a8e1aea39eebe2e.fitBounds(
+                [[29.772763420000047, -96.96171194099998], [33.045732790000045, -94.68907209699995]],
+                {}
+            );
+        
+    
+        function geo_json_124bb32bb4f94cbc2832302d63855790_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "red", "fillColor": "red", "fillOpacity": 0.5, "weight": 2};
+            }
+        }
+        function geo_json_124bb32bb4f94cbc2832302d63855790_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.75};
+            }
+        }
+        function geo_json_124bb32bb4f94cbc2832302d63855790_pointToLayer(feature, latlng) {
+            var opts = {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20, "stroke": true, "weight": 3};
+            
+            let style = geo_json_124bb32bb4f94cbc2832302d63855790_styler(feature)
+            Object.assign(opts, style)
+            
+            return new L.CircleMarker(latlng, opts)
+        }
+
+        function geo_json_124bb32bb4f94cbc2832302d63855790_onEachFeature(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        geo_json_124bb32bb4f94cbc2832302d63855790.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_124bb32bb4f94cbc2832302d63855790_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_124bb32bb4f94cbc2832302d63855790 = L.geoJson(null, {
+                onEachFeature: geo_json_124bb32bb4f94cbc2832302d63855790_onEachFeature,
+            
+                style: geo_json_124bb32bb4f94cbc2832302d63855790_styler,
+                pointToLayer: geo_json_124bb32bb4f94cbc2832302d63855790_pointToLayer
+        });
+
+        function geo_json_124bb32bb4f94cbc2832302d63855790_add (data) {
+            geo_json_124bb32bb4f94cbc2832302d63855790
+                .addData(data)
+                .addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        }
+            geo_json_124bb32bb4f94cbc2832302d63855790_add({"bbox": [-96.96171194099998, 29.772763420000047, -94.68907209699995, 33.045732790000045], "features": [{"bbox": [-96.96171194099998, 33.045732790000045, -96.96171194099998, 33.045732790000045], "geometry": {"coordinates": [-96.96171194099998, 33.045732790000045], "type": "Point"}, "id": "0", "properties": {"C1": 23.53, "C2": 25.455, "C3": 24.125, "C_PFAS": 18.44, "Field_Name": "UTRWD, Bridge SH 121", "Industrial": 0.0, "January_DF": 21.949, "January_Me": 422.961, "MunicipalD": 8.414141, "OBJECTID": 1, "PFAS_Sucra": 0.0027106741573, "S1": 8900.0, "S2": 9500.0, "S3": 8500.0, "SYS_NAME": "UTRWD REGIONAL WATER TREATMENT PLA", "S_Sucralos": 8900.0, "SiteNo": "Site 01", "Sucralose1": 8.9, "Sucralose_": 368.91, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [-96.94454166399998, 32.966095651000046, -96.94454166399998, 32.966095651000046], "geometry": {"coordinates": [-96.94454166399998, 32.966095651000046], "type": "Point"}, "id": "1", "properties": {"C1": 36.245, "C2": 38.385, "C3": 39.535, "C_PFAS": 31.21, "Field_Name": "Dallas, Bridge Sandy Lake Rd", "Industrial": 0.0, "January_DF": 30.476, "January_Me": 485.25, "MunicipalD": 11.566429, "OBJECTID": 2, "PFAS_Sucra": 0.002559, "S1": 13000.0, "S2": 15000.0, "S3": 15000.0, "SYS_NAME": "DALLAS WATER UTILITY SANDY LAKE RD", "S_Sucralos": 15000.0, "SiteNo": "Site 02", "Sucralose1": 15.0, "Sucralose_": 390.78, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [-96.89298147599999, 32.84780615900007, -96.89298147599999, 32.84780615900007], "geometry": {"coordinates": [-96.89298147599999, 32.84780615900007], "type": "Point"}, "id": "2", "properties": {"C1": 43.525, "C2": 43.085, "C3": 45.305, "C_PFAS": 37.67, "Field_Name": "Dallas, Spur 408", "Industrial": 0.004765, "January_DF": 38.548, "January_Me": 496.379, "MunicipalD": 16.935509, "OBJECTID": 3, "PFAS_Sucra": 0.00500287356322, "S1": 8900.0, "S2": 8700.0, "S3": 7600.0, "SYS_NAME": "DALLAS WATER UTILITY STOREY LN", "S_Sucralos": 8700.0, "SiteNo": "Site 03", "Sucralose1": 8.7, "Sucralose_": 199.89, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [-96.10234832899994, 32.14810973500005, -96.10234832899994, 32.14810973500005], "geometry": {"coordinates": [-96.10234832899994, 32.14810973500005], "type": "Point"}, "id": "3", "properties": {"C1": 69.235, "C2": 75.845, "C3": 77.615, "C_PFAS": 69.09, "Field_Name": "Trinidad, SH 31", "Industrial": 1.791294, "January_DF": 88.263, "January_Me": 2279.931, "MunicipalD": 32.795108, "OBJECTID": 4, "PFAS_Sucra": 0.00194474358974, "S1": 24000.0, "S2": 39000.0, "S3": 43000.0, "SYS_NAME": "CITY OF TRINIDAD", "S_Sucralos": 39000.0, "SiteNo": "Site 04", "Sucralose1": 39.0, "Sucralose_": 514.21, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [-95.38408032199999, 30.87857321200005, -95.38408032199999, 30.87857321200005], "geometry": {"coordinates": [-95.38408032199999, 30.87857321200005], "type": "Point"}, "id": "4", "properties": {"C1": 43.075, "C2": 41.375, "C3": 42.475, "C_PFAS": 35.400000000000006, "Field_Name": "Trinity Rural WSC 1, SH 19", "Industrial": 12.864299, "January_DF": 22.472, "January_Me": 9335.053, "MunicipalD": 100.0, "OBJECTID": 5, "PFAS_Sucra": 0.00212375, "S1": 20000.0, "S2": 20000.0, "S3": 17000.0, "SYS_NAME": "TRINITY RURAL WSC 1", "S_Sucralos": 20000.0, "SiteNo": "Site 05", "Sucralose1": 20.0, "Sucralose_": 470.865, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [-95.24496578699996, 30.860976841000024, -95.24496578699996, 30.860976841000024], "geometry": {"coordinates": [-95.24496578699996, 30.860976841000024], "type": "Point"}, "id": "5", "properties": {"C1": 42.305, "C2": 37.815, "C3": 38.355, "C_PFAS": 32.260000000000005, "Field_Name": "Waterwood MUD 1, Boat", "Industrial": 7.862916, "January_DF": 19.859, "January_Me": 10617.795, "MunicipalD": 100.0, "OBJECTID": 6, "PFAS_Sucra": 0.00319625, "S1": 12000.0, "S2": 12000.0, "S3": 10000.0, "SYS_NAME": "WATERWOOD MUD 1", "S_Sucralos": 12000.0, "SiteNo": "Site 06", "Sucralose1": 12.0, "Sucralose_": 312.87, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [-95.01435902999998, 30.63256781900003, -95.01435902999998, 30.63256781900003], "geometry": {"coordinates": [-95.01435902999998, 30.63256781900003], "type": "Point"}, "id": "6", "properties": {"C1": 36.595, "C2": 32.625, "C3": 34.585, "C_PFAS": 27.515, "Field_Name": "TRA Livingston Regional, Boat", "Industrial": 5.584539, "January_DF": 18.317, "January_Me": 11519.28, "MunicipalD": 100.0, "OBJECTID": 7, "PFAS_Sucra": 0.00557822580645, "S1": 6500.0, "S2": 5700.0, "S3": 6200.0, "SYS_NAME": "TRA LIVINGSTON REGIONAL WATER SUPP", "S_Sucralos": 6200.0, "SiteNo": "Site 07", "Sucralose1": 6.2, "Sucralose_": 179.27, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [-94.81025149599998, 29.963159887000074, -94.81025149599998, 29.963159887000074], "geometry": {"coordinates": [-94.81025149599998, 29.963159887000074], "type": "Point"}, "id": "7", "properties": {"C1": 31.525, "C2": 32.325, "C3": 29.39, "C_PFAS": 34.29, "Field_Name": "Chevron Phillips, Boat", "Industrial": 0.930173, "January_DF": 15.388, "January_Me": 13828.135, "MunicipalD": 17.344606, "OBJECTID": 8, "PFAS_Sucra": 0.00562946428571, "S1": 5600.0, "S2": 5700.0, "S3": 5300.0, "SYS_NAME": "CHEVRON PHILLIPS PASADENA PLASTICS", "S_Sucralos": 5600.0, "SiteNo": "Site 08", "Sucralose1": 5.6, "Sucralose_": 177.64, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [-94.77537414499994, 29.939730540000028, -94.77537414499994, 29.939730540000028], "geometry": {"coordinates": [-94.77537414499994, 29.939730540000028], "type": "Point"}, "id": "8", "properties": {"C1": 29.575, "C2": 30.225, "C3": 28.955, "C_PFAS": 27.330000000000002, "Field_Name": "TBCD Winnie, Boat", "Industrial": 0.927142, "January_DF": 7.621, "January_Me": 13960.857, "MunicipalD": 17.288076, "OBJECTID": 9, "PFAS_Sucra": 0.00579901960784, "S1": 5300.0, "S2": 5100.0, "S3": 5100.0, "SYS_NAME": "TBCD WINNIE STOWELL", "S_Sucralos": 5100.0, "SiteNo": "Site 09", "Sucralose1": 5.1, "Sucralose_": 172.44, "__folium_color": "red"}, "type": "Feature"}, {"bbox": [-94.68907209699995, 29.772763420000047, -94.68907209699995, 29.772763420000047], "geometry": {"coordinates": [-94.68907209699995, 29.772763420000047], "type": "Point"}, "id": "9", "properties": {"C1": 21.935, "C2": 23.555, "C3": 14.615, "C_PFAS": 17.310000000000002, "Field_Name": "Anahuac, Boat", "Industrial": 0.909269, "January_DF": 1.405, "January_Me": 14815.483, "MunicipalD": 16.98011, "OBJECTID": 10, "PFAS_Sucra": 0.00592837837838, "S1": 3700.0, "S2": 1800.0, "S3": 3800.0, "SYS_NAME": "CITY OF ANAHUAC", "S_Sucralos": 3700.0, "SiteNo": "Site 10", "Sucralose1": 3.7, "Sucralose_": 168.68, "__folium_color": "red"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_124bb32bb4f94cbc2832302d63855790.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["OBJECTID", "SYS_NAME", "Field_Name", "C1", "C2", "C3", "C_PFAS", "S1", "S2", "S3", "S_Sucralos", "MunicipalD", "Industrial", "PFAS_Sucra", "Sucralose_", "Sucralose1", "SiteNo", "January_Me", "January_DF"];
+    let aliases = ["OBJECTID", "SYS_NAME", "Field_Name", "C1", "C2", "C3", "C_PFAS", "S1", "S2", "S3", "S_Sucralos", "MunicipalD", "Industrial", "PFAS_Sucra", "Sucralose_", "Sucralose1", "SiteNo", "January_Me", "January_DF"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumtooltip", "sticky": true});
+                     
+    
+            var marker_c140087033f3e8a37701c461fdbc6f76 = L.marker(
+                [32.54933, -97.13729],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_19e225cea4de913538e10039879493e1 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_17d772f6ca3460f61f6940e50b8ea252 = $(`<div id="html_17d772f6ca3460f61f6940e50b8ea252" style="width: 100.0%; height: 100.0%;">DURA-TECH PROCESSES</div>`)[0];
+            popup_19e225cea4de913538e10039879493e1.setContent(html_17d772f6ca3460f61f6940e50b8ea252);
+        
+
+        marker_c140087033f3e8a37701c461fdbc6f76.bindPopup(popup_19e225cea4de913538e10039879493e1)
+        ;
+
+        
+    
+    
+            var marker_f4d571e10ffa904f8543e3269b1d0ffa = L.marker(
+                [32.55011, -97.62799],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_699ce8ea20d188647bdcdcfce8a76c40 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_88a499e4fb01bbba7f5765bdb98555d9 = $(`<div id="html_88a499e4fb01bbba7f5765bdb98555d9" style="width: 100.0%; height: 100.0%;">TRI-CHEM SPECIALTY LLC</div>`)[0];
+            popup_699ce8ea20d188647bdcdcfce8a76c40.setContent(html_88a499e4fb01bbba7f5765bdb98555d9);
+        
+
+        marker_f4d571e10ffa904f8543e3269b1d0ffa.bindPopup(popup_699ce8ea20d188647bdcdcfce8a76c40)
+        ;
+
+        
+    
+    
+            var marker_77f0a89d57904f37b178363cfda2b72c = L.marker(
+                [32.55622, -97.15642],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_77966c075041755056acb6e3cfbbf23d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_10fa3ccf31b5632ef42191ec00c5b43e = $(`<div id="html_10fa3ccf31b5632ef42191ec00c5b43e" style="width: 100.0%; height: 100.0%;">CHEMGUARD INC</div>`)[0];
+            popup_77966c075041755056acb6e3cfbbf23d.setContent(html_10fa3ccf31b5632ef42191ec00c5b43e);
+        
+
+        marker_77f0a89d57904f37b178363cfda2b72c.bindPopup(popup_77966c075041755056acb6e3cfbbf23d)
+        ;
+
+        
+    
+    
+            var marker_9244471c2002dad1c527bcca6e2589c0 = L.marker(
+                [32.61471, -97.35618],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_76682886d345d6bf97a90d1493825093 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_846f50c574689c4126a9c4205b6c6574 = $(`<div id="html_846f50c574689c4126a9c4205b6c6574" style="width: 100.0%; height: 100.0%;">MEYER UTILITY STRUCTURES</div>`)[0];
+            popup_76682886d345d6bf97a90d1493825093.setContent(html_846f50c574689c4126a9c4205b6c6574);
+        
+
+        marker_9244471c2002dad1c527bcca6e2589c0.bindPopup(popup_76682886d345d6bf97a90d1493825093)
+        ;
+
+        
+    
+    
+            var marker_1d475e97c2642e7b77fa5c75aea6fff4 = L.marker(
+                [32.81643, -96.91403],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_4f0b4aa676160f20652ac1dc51688d4f = L.popup({"maxWidth": "100%"});
+
+        
+            var html_2d0697349f7c1339d29dd80d9f3e37bb = $(`<div id="html_2d0697349f7c1339d29dd80d9f3e37bb" style="width: 100.0%; height: 100.0%;">BESTOLIFE</div>`)[0];
+            popup_4f0b4aa676160f20652ac1dc51688d4f.setContent(html_2d0697349f7c1339d29dd80d9f3e37bb);
+        
+
+        marker_1d475e97c2642e7b77fa5c75aea6fff4.bindPopup(popup_4f0b4aa676160f20652ac1dc51688d4f)
+        ;
+
+        
+    
+    
+            var marker_0ca92d8b307202b011864144ba4c1b5f = L.marker(
+                [32.83159, -96.82785],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_996301a36793d8dfc42e97230f4e22d6 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_8514c59cbb4ff2a45829bdffabab2c3c = $(`<div id="html_8514c59cbb4ff2a45829bdffabab2c3c" style="width: 100.0%; height: 100.0%;">RAYTHEON LEMMON AVENUE</div>`)[0];
+            popup_996301a36793d8dfc42e97230f4e22d6.setContent(html_8514c59cbb4ff2a45829bdffabab2c3c);
+        
+
+        marker_0ca92d8b307202b011864144ba4c1b5f.bindPopup(popup_996301a36793d8dfc42e97230f4e22d6)
+        ;
+
+        
+    
+    
+            var marker_47250fd360aa376dda42eced8671e32a = L.marker(
+                [32.83194, -96.84583],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_bbc3f966067d967002aa99ed236fb4b4 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_ee9536d79af6e008cd24851dca90adc6 = $(`<div id="html_ee9536d79af6e008cd24851dca90adc6" style="width: 100.0%; height: 100.0%;">HEMPEL DALLAS PLANT</div>`)[0];
+            popup_bbc3f966067d967002aa99ed236fb4b4.setContent(html_ee9536d79af6e008cd24851dca90adc6);
+        
+
+        marker_47250fd360aa376dda42eced8671e32a.bindPopup(popup_bbc3f966067d967002aa99ed236fb4b4)
+        ;
+
+        
+    
+    
+            var marker_8e7d7fc6b40833a3dc6d9e7ed7a7b3f5 = L.marker(
+                [32.84464, -97.10725],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_d5edff0dd34005cbf432b939043a0558 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_8916766f678f7c212aea2092b15acb46 = $(`<div id="html_8916766f678f7c212aea2092b15acb46" style="width: 100.0%; height: 100.0%;">POLYCOAT PRODUCTS LLC</div>`)[0];
+            popup_d5edff0dd34005cbf432b939043a0558.setContent(html_8916766f678f7c212aea2092b15acb46);
+        
+
+        marker_8e7d7fc6b40833a3dc6d9e7ed7a7b3f5.bindPopup(popup_d5edff0dd34005cbf432b939043a0558)
+        ;
+
+        
+    
+    
+            var marker_207fda725471fa7f4998ac5bc5e8f62e = L.marker(
+                [32.9259, -96.75366],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_0c55106e5c373f2ffe770f6073559b53 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_7f65edb5f0a7b05cf5847a68bced8bc1 = $(`<div id="html_7f65edb5f0a7b05cf5847a68bced8bc1" style="width: 100.0%; height: 100.0%;">AIR LIQUIDE AMERICA L P</div>`)[0];
+            popup_0c55106e5c373f2ffe770f6073559b53.setContent(html_7f65edb5f0a7b05cf5847a68bced8bc1);
+        
+
+        marker_207fda725471fa7f4998ac5bc5e8f62e.bindPopup(popup_0c55106e5c373f2ffe770f6073559b53)
+        ;
+
+        
+    
+    
+            var marker_039410ec9a6ec2367928804d29debe48 = L.marker(
+                [32.93311, -96.7537],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_c0ad4743c408135d67dc67306c9d9e59 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_5b708a7fe29209d7a310a2ef1001c9be = $(`<div id="html_5b708a7fe29209d7a310a2ef1001c9be" style="width: 100.0%; height: 100.0%;">TEXAS INSTRUMENTS NORTH CAMPUS</div>`)[0];
+            popup_c0ad4743c408135d67dc67306c9d9e59.setContent(html_5b708a7fe29209d7a310a2ef1001c9be);
+        
+
+        marker_039410ec9a6ec2367928804d29debe48.bindPopup(popup_c0ad4743c408135d67dc67306c9d9e59)
+        ;
+
+        
+    
+    
+            var marker_b7579f9d5f48a56f6395d82008932544 = L.marker(
+                [32.93337, -96.75336],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_043ae2b41484b01f49e54c441f8e6817 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f2753b18ddbc29d9dca09e6686bcd46f = $(`<div id="html_f2753b18ddbc29d9dca09e6686bcd46f" style="width: 100.0%; height: 100.0%;">DRS NIS INFRARED SENSORS & SYSTEMS</div>`)[0];
+            popup_043ae2b41484b01f49e54c441f8e6817.setContent(html_f2753b18ddbc29d9dca09e6686bcd46f);
+        
+
+        marker_b7579f9d5f48a56f6395d82008932544.bindPopup(popup_043ae2b41484b01f49e54c441f8e6817)
+        ;
+
+        
+    
+    
+            var marker_7b70da6b02318f43e56a79608588e99b = L.marker(
+                [32.94861, -96.83545],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_66bf90433d9c919906975cc100398fec = L.popup({"maxWidth": "100%"});
+
+        
+            var html_43a2c4b2ab8f98ee3e419a848311e1bc = $(`<div id="html_43a2c4b2ab8f98ee3e419a848311e1bc" style="width: 100.0%; height: 100.0%;">QORVO TEXAS</div>`)[0];
+            popup_66bf90433d9c919906975cc100398fec.setContent(html_43a2c4b2ab8f98ee3e419a848311e1bc);
+        
+
+        marker_7b70da6b02318f43e56a79608588e99b.bindPopup(popup_66bf90433d9c919906975cc100398fec)
+        ;
+
+        
+    
+    
+            var marker_f207cd5b43396d9f5fea05ceef4dc103 = L.marker(
+                [32.98063, -96.85098],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_4b8c8c9629ac740b7c894acee370cf59 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_220ee9cda4b0ec2e3037b4dd9527fdde = $(`<div id="html_220ee9cda4b0ec2e3037b4dd9527fdde" style="width: 100.0%; height: 100.0%;">CENTURY PRODUCTS</div>`)[0];
+            popup_4b8c8c9629ac740b7c894acee370cf59.setContent(html_220ee9cda4b0ec2e3037b4dd9527fdde);
+        
+
+        marker_f207cd5b43396d9f5fea05ceef4dc103.bindPopup(popup_4b8c8c9629ac740b7c894acee370cf59)
+        ;
+
+        
+    
+    
+            var marker_89e21cb259c612391f16806599f0f580 = L.marker(
+                [32.99761, -96.72705],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_32a9de8cacd1c104b2f6b4ec06ec694b = L.popup({"maxWidth": "100%"});
+
+        
+            var html_23f181a6d3e5e623e0562e102c33fa87 = $(`<div id="html_23f181a6d3e5e623e0562e102c33fa87" style="width: 100.0%; height: 100.0%;">TRIQUINT SEMICONDUCTOR TEXAS LP</div>`)[0];
+            popup_32a9de8cacd1c104b2f6b4ec06ec694b.setContent(html_23f181a6d3e5e623e0562e102c33fa87);
+        
+
+        marker_89e21cb259c612391f16806599f0f580.bindPopup(popup_32a9de8cacd1c104b2f6b4ec06ec694b)
+        ;
+
+        
+    
+    
+            var marker_241370da2317d7a2b2ed6b8a596c7b23 = L.marker(
+                [32.99975, -96.72063],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_3fabf808e41d0afa4f124a9c35195d77 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_8929ed44c982f9395b1127bdae950d92 = $(`<div id="html_8929ed44c982f9395b1127bdae950d92" style="width: 100.0%; height: 100.0%;">TEXAS INSTRUMENTS INC</div>`)[0];
+            popup_3fabf808e41d0afa4f124a9c35195d77.setContent(html_8929ed44c982f9395b1127bdae950d92);
+        
+
+        marker_241370da2317d7a2b2ed6b8a596c7b23.bindPopup(popup_3fabf808e41d0afa4f124a9c35195d77)
+        ;
+
+        
+    
+    
+            var marker_34e53631d79245eeaed258109bba7541 = L.marker(
+                [33.66576, -97.15126],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_2a0e07759faba800be240c3ca8f50df5 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_81ed6711a5ba0c51d174b5e1358c280b = $(`<div id="html_81ed6711a5ba0c51d174b5e1358c280b" style="width: 100.0%; height: 100.0%;">PPG IDUSTRIES INC. TX</div>`)[0];
+            popup_2a0e07759faba800be240c3ca8f50df5.setContent(html_81ed6711a5ba0c51d174b5e1358c280b);
+        
+
+        marker_34e53631d79245eeaed258109bba7541.bindPopup(popup_2a0e07759faba800be240c3ca8f50df5)
+        ;
+
+        
+    
+    
+            var marker_96017f29e03d4debe1f8be7e61831824 = L.marker(
+                [31.27265, -95.98596],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_1c25853003ebf969adc8caf3c82b1786 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_8bd8b08f718d8661c4fb14842c050443 = $(`<div id="html_8bd8b08f718d8661c4fb14842c050443" style="width: 100.0%; height: 100.0%;">CHAMPION TECHNOLOGIES INC</div>`)[0];
+            popup_1c25853003ebf969adc8caf3c82b1786.setContent(html_8bd8b08f718d8661c4fb14842c050443);
+        
+
+        marker_96017f29e03d4debe1f8be7e61831824.bindPopup(popup_1c25853003ebf969adc8caf3c82b1786)
+        ;
+
+        
+    
+    
+            var marker_a24aabb5e92f2611531f3a51810d375f = L.marker(
+                [31.72452, -96.16755],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_a985562d1ed33e401c55ed2f268774a5 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_c4ce3153a8b70c665d2a6fded2ed0f0f = $(`<div id="html_c4ce3153a8b70c665d2a6fded2ed0f0f" style="width: 100.0%; height: 100.0%;">MULTI-CHEM GROUP FAIRFIELD FACILITY</div>`)[0];
+            popup_a985562d1ed33e401c55ed2f268774a5.setContent(html_c4ce3153a8b70c665d2a6fded2ed0f0f);
+        
+
+        marker_a24aabb5e92f2611531f3a51810d375f.bindPopup(popup_a985562d1ed33e401c55ed2f268774a5)
+        ;
+
+        
+    
+    
+            var marker_046d8840db2afea0e4bec826c12f9a75 = L.marker(
+                [32.30472, -96.61417],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_393bb4ade9e499b385322b7a9f75daad = L.popup({"maxWidth": "100%"});
+
+        
+            var html_56c50dcd204228b3da472bbd043b082a = $(`<div id="html_56c50dcd204228b3da472bbd043b082a" style="width: 100.0%; height: 100.0%;">SHERWIN-WILLIAMS CO</div>`)[0];
+            popup_393bb4ade9e499b385322b7a9f75daad.setContent(html_56c50dcd204228b3da472bbd043b082a);
+        
+
+        marker_046d8840db2afea0e4bec826c12f9a75.bindPopup(popup_393bb4ade9e499b385322b7a9f75daad)
+        ;
+
+        
+    
+    
+            var marker_581932bc90fc8acf20bf3f2b52fd667a = L.marker(
+                [32.30782, -96.59201],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_a44b16d077295c81167c82273c4346a2 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_d2fb5783fe2e7cc4d6515b295836e3fa = $(`<div id="html_d2fb5783fe2e7cc4d6515b295836e3fa" style="width: 100.0%; height: 100.0%;">POLYGUARD PRODUCTS</div>`)[0];
+            popup_a44b16d077295c81167c82273c4346a2.setContent(html_d2fb5783fe2e7cc4d6515b295836e3fa);
+        
+
+        marker_581932bc90fc8acf20bf3f2b52fd667a.bindPopup(popup_a44b16d077295c81167c82273c4346a2)
+        ;
+
+        
+    
+    
+            var marker_ccf3e214f7f14d125c32e8829e35d493 = L.marker(
+                [32.3562, -96.6351],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_e935ef73d104fefc57fedec10e49aa87 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_39933417bb38a4cb5a5a78f3494f2c1f = $(`<div id="html_39933417bb38a4cb5a5a78f3494f2c1f" style="width: 100.0%; height: 100.0%;">ENNIS-FLINT NORTH</div>`)[0];
+            popup_e935ef73d104fefc57fedec10e49aa87.setContent(html_39933417bb38a4cb5a5a78f3494f2c1f);
+        
+
+        marker_ccf3e214f7f14d125c32e8829e35d493.bindPopup(popup_e935ef73d104fefc57fedec10e49aa87)
+        ;
+
+        
+    
+    
+            var marker_e03afb2f2c32e40237028a943bc8fa4b = L.marker(
+                [32.72053, -96.26968],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_c66e65f931e6b06636ba862073abb123 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_18f458ed74c8d382295f8362a112c655 = $(`<div id="html_18f458ed74c8d382295f8362a112c655" style="width: 100.0%; height: 100.0%;">OLDCASTLE BUILDING ENVELOPE - TEXAS FACILITY</div>`)[0];
+            popup_c66e65f931e6b06636ba862073abb123.setContent(html_18f458ed74c8d382295f8362a112c655);
+        
+
+        marker_e03afb2f2c32e40237028a943bc8fa4b.bindPopup(popup_c66e65f931e6b06636ba862073abb123)
+        ;
+
+        
+    
+    
+            var marker_ab601e34532eaae34a2bb11062bd29a4 = L.marker(
+                [32.77078, -96.60803],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_e10362e96fac955d57a014650afe4d00 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_3bcb60993ba6aac2cab44a2fa5737a42 = $(`<div id="html_3bcb60993ba6aac2cab44a2fa5737a42" style="width: 100.0%; height: 100.0%;">BENJAMIN MOORE</div>`)[0];
+            popup_e10362e96fac955d57a014650afe4d00.setContent(html_3bcb60993ba6aac2cab44a2fa5737a42);
+        
+
+        marker_ab601e34532eaae34a2bb11062bd29a4.bindPopup(popup_e10362e96fac955d57a014650afe4d00)
+        ;
+
+        
+    
+    
+            var marker_7a3e217bd58f65323906d72b04413b23 = L.marker(
+                [32.87881, -96.6737],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_6951f09429e6a963276a3eb16afd4d50 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_80ee9b890051325188a89203760f2de3 = $(`<div id="html_80ee9b890051325188a89203760f2de3" style="width: 100.0%; height: 100.0%;">CARROLLCLEAN</div>`)[0];
+            popup_6951f09429e6a963276a3eb16afd4d50.setContent(html_80ee9b890051325188a89203760f2de3);
+        
+
+        marker_7a3e217bd58f65323906d72b04413b23.bindPopup(popup_6951f09429e6a963276a3eb16afd4d50)
+        ;
+
+        
+    
+    
+            var marker_881101b9395fd5ae58b185fc8c8e04dc = L.marker(
+                [32.8875, -96.67722],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_6e0acac92bdc994b187a1f11f8660ac7 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f5bedf1a57ab0c197d4bfc564be1e7fd = $(`<div id="html_f5bedf1a57ab0c197d4bfc564be1e7fd" style="width: 100.0%; height: 100.0%;">ASHLAND DISTRIBUTION CO GARLAND TX</div>`)[0];
+            popup_6e0acac92bdc994b187a1f11f8660ac7.setContent(html_f5bedf1a57ab0c197d4bfc564be1e7fd);
+        
+
+        marker_881101b9395fd5ae58b185fc8c8e04dc.bindPopup(popup_6e0acac92bdc994b187a1f11f8660ac7)
+        ;
+
+        
+    
+    
+            var marker_13b1872bbc830a19d7b0cc6af7ce01a8 = L.marker(
+                [32.62407, -96.8461],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_9b1083348b4c4f8feabe9e12922b62aa = L.popup({"maxWidth": "100%"});
+
+        
+            var html_2b927ad7c60cd70771b7957464a2c438 = $(`<div id="html_2b927ad7c60cd70771b7957464a2c438" style="width: 100.0%; height: 100.0%;">ZEP INC</div>`)[0];
+            popup_9b1083348b4c4f8feabe9e12922b62aa.setContent(html_2b927ad7c60cd70771b7957464a2c438);
+        
+
+        marker_13b1872bbc830a19d7b0cc6af7ce01a8.bindPopup(popup_9b1083348b4c4f8feabe9e12922b62aa)
+        ;
+
+        
+    
+    
+            var marker_4e11b513b08c1b11c4c3f72a80e8b5a7 = L.marker(
+                [32.7008, -96.91829],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_8312d1e33f1eac20be08b7d1ea5ea40a = L.popup({"maxWidth": "100%"});
+
+        
+            var html_c3e8366c4cf676bc31156026193e5f8a = $(`<div id="html_c3e8366c4cf676bc31156026193e5f8a" style="width: 100.0%; height: 100.0%;">UNIVAR SOLUTIONS DALLAS DAN MORTON</div>`)[0];
+            popup_8312d1e33f1eac20be08b7d1ea5ea40a.setContent(html_c3e8366c4cf676bc31156026193e5f8a);
+        
+
+        marker_4e11b513b08c1b11c4c3f72a80e8b5a7.bindPopup(popup_8312d1e33f1eac20be08b7d1ea5ea40a)
+        ;
+
+        
+    
+    
+            var marker_83006c310231c2e2850a49f88266dc67 = L.marker(
+                [32.75412, -97.05999],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_e7609eda28f6b9e26aa179ead37af381 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_056d7d0d3f55fae6fb50ab954272d6a0 = $(`<div id="html_056d7d0d3f55fae6fb50ab954272d6a0" style="width: 100.0%; height: 100.0%;">THE SHERWIN-WILLIAMS</div>`)[0];
+            popup_e7609eda28f6b9e26aa179ead37af381.setContent(html_056d7d0d3f55fae6fb50ab954272d6a0);
+        
+
+        marker_83006c310231c2e2850a49f88266dc67.bindPopup(popup_e7609eda28f6b9e26aa179ead37af381)
+        ;
+
+        
+    
+    
+            var marker_18d0f726b1e0dbf28ce75e0e36ed6a20 = L.marker(
+                [32.7557, -97.78047],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_80557a9c5970a883e64eb2020b79e601 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_8719d8d9f5ad202f9bb40480768fcb3f = $(`<div id="html_8719d8d9f5ad202f9bb40480768fcb3f" style="width: 100.0%; height: 100.0%;">COLUMBIA STREET PLANT</div>`)[0];
+            popup_80557a9c5970a883e64eb2020b79e601.setContent(html_8719d8d9f5ad202f9bb40480768fcb3f);
+        
+
+        marker_18d0f726b1e0dbf28ce75e0e36ed6a20.bindPopup(popup_80557a9c5970a883e64eb2020b79e601)
+        ;
+
+        
+    
+    
+            var marker_f1824be0df78652bfce01f507060ec0e = L.marker(
+                [32.7669, -97.04843],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_dda39fbd711bcbcf82e30274aca9a27f = L.popup({"maxWidth": "100%"});
+
+        
+            var html_81aa914dfba89faf7dd45474e7987744 = $(`<div id="html_81aa914dfba89faf7dd45474e7987744" style="width: 100.0%; height: 100.0%;">ABC COMPOUNDING CO OF TEXAS INC</div>`)[0];
+            popup_dda39fbd711bcbcf82e30274aca9a27f.setContent(html_81aa914dfba89faf7dd45474e7987744);
+        
+
+        marker_f1824be0df78652bfce01f507060ec0e.bindPopup(popup_dda39fbd711bcbcf82e30274aca9a27f)
+        ;
+
+        
+    
+    
+            var marker_b559e73d1e2ce253e32a51f7021c0440 = L.marker(
+                [32.77245, -97.80173],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_6abe01792d44bcca4b2dbce0a4f81ae7 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_60f7a281496fe0296294f62b6b6b9e60 = $(`<div id="html_60f7a281496fe0296294f62b6b6b9e60" style="width: 100.0%; height: 100.0%;">WEATHERFORD AEROSPACE</div>`)[0];
+            popup_6abe01792d44bcca4b2dbce0a4f81ae7.setContent(html_60f7a281496fe0296294f62b6b6b9e60);
+        
+
+        marker_b559e73d1e2ce253e32a51f7021c0440.bindPopup(popup_6abe01792d44bcca4b2dbce0a4f81ae7)
+        ;
+
+        
+    
+    
+            var marker_909d766478202dc3edc9e072c9df00d5 = L.marker(
+                [32.78056, -97.34167],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_4b150ba7bf9842e1568b569ceae26ad7 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_3a90323bef603e8a3db515e0331b8f21 = $(`<div id="html_3a90323bef603e8a3db515e0331b8f21" style="width: 100.0%; height: 100.0%;">NOURYON SURFACE CHEMISTRY LLC FT WORTH PLANT</div>`)[0];
+            popup_4b150ba7bf9842e1568b569ceae26ad7.setContent(html_3a90323bef603e8a3db515e0331b8f21);
+        
+
+        marker_909d766478202dc3edc9e072c9df00d5.bindPopup(popup_4b150ba7bf9842e1568b569ceae26ad7)
+        ;
+
+        
+    
+    
+            var marker_f7cc6dfd288ad13d1367b7a8cedebe15 = L.marker(
+                [32.7896, -97.0377],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_75d7773a18939b9efc37aa73a1d5089b = L.popup({"maxWidth": "100%"});
+
+        
+            var html_a56c3eb46121e88c77fed926b75bc7a5 = $(`<div id="html_a56c3eb46121e88c77fed926b75bc7a5" style="width: 100.0%; height: 100.0%;">ENGINEERED POLYMER SOLUTIONS INC D/B/A VALSPAR COATINGS</div>`)[0];
+            popup_75d7773a18939b9efc37aa73a1d5089b.setContent(html_a56c3eb46121e88c77fed926b75bc7a5);
+        
+
+        marker_f7cc6dfd288ad13d1367b7a8cedebe15.bindPopup(popup_75d7773a18939b9efc37aa73a1d5089b)
+        ;
+
+        
+    
+    
+            var marker_5becd243ce0c258e1344015a62db9c19 = L.marker(
+                [32.8896, -96.66861],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_fc9e2a597ea7dc81e0c9a6f1f7e3c394 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_0ee2af05b50873d761fb93c6dcb9905b = $(`<div id="html_0ee2af05b50873d761fb93c6dcb9905b" style="width: 100.0%; height: 100.0%;">ECOLAB INC</div>`)[0];
+            popup_fc9e2a597ea7dc81e0c9a6f1f7e3c394.setContent(html_0ee2af05b50873d761fb93c6dcb9905b);
+        
+
+        marker_5becd243ce0c258e1344015a62db9c19.bindPopup(popup_fc9e2a597ea7dc81e0c9a6f1f7e3c394)
+        ;
+
+        
+    
+    
+            var marker_895a23a76746f5e6562a8ae61e7be6cf = L.marker(
+                [32.89331, -96.68112],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_32a1ad4f12fe8cfe2f55c96da6847a37 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_68db53b2060d15483fca47d02c3808df = $(`<div id="html_68db53b2060d15483fca47d02c3808df" style="width: 100.0%; height: 100.0%;">INFRARED PRODUCTS - L-3</div>`)[0];
+            popup_32a1ad4f12fe8cfe2f55c96da6847a37.setContent(html_68db53b2060d15483fca47d02c3808df);
+        
+
+        marker_895a23a76746f5e6562a8ae61e7be6cf.bindPopup(popup_32a1ad4f12fe8cfe2f55c96da6847a37)
+        ;
+
+        
+    
+    
+            var marker_aabb54584f771f21f7ca59c0e87a7475 = L.marker(
+                [32.89439, -96.67026],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_fb291ea59a617228d8a38a45ae79371e = L.popup({"maxWidth": "100%"});
+
+        
+            var html_2381730ebb64a0524d9b39a2b4377476 = $(`<div id="html_2381730ebb64a0524d9b39a2b4377476" style="width: 100.0%; height: 100.0%;">SHERWIN WILLIAMS COMPANY GARLAND</div>`)[0];
+            popup_fb291ea59a617228d8a38a45ae79371e.setContent(html_2381730ebb64a0524d9b39a2b4377476);
+        
+
+        marker_aabb54584f771f21f7ca59c0e87a7475.bindPopup(popup_fb291ea59a617228d8a38a45ae79371e)
+        ;
+
+        
+    
+    
+            var marker_8fdc4e099dd10b72d66dd794da56d2e3 = L.marker(
+                [32.9025, -96.69278],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_3d5e3a66ce4574f554ae3b9d0e3b30ec = L.popup({"maxWidth": "100%"});
+
+        
+            var html_32da5c3031c7b45bed65b2f6ce213b0b = $(`<div id="html_32da5c3031c7b45bed65b2f6ce213b0b" style="width: 100.0%; height: 100.0%;">UNIVAR USA INC.--DALLAS, TX</div>`)[0];
+            popup_3d5e3a66ce4574f554ae3b9d0e3b30ec.setContent(html_32da5c3031c7b45bed65b2f6ce213b0b);
+        
+
+        marker_8fdc4e099dd10b72d66dd794da56d2e3.bindPopup(popup_3d5e3a66ce4574f554ae3b9d0e3b30ec)
+        ;
+
+        
+    
+    
+            var marker_9671e42d7c1ab2b9be024b988f8e2d30 = L.marker(
+                [32.90337, -96.69015],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_2d61f653d1a610b1c3fa2a843488e754 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_7f8fe2a93aacecf319d8138eb2fc11d4 = $(`<div id="html_7f8fe2a93aacecf319d8138eb2fc11d4" style="width: 100.0%; height: 100.0%;">ATOMIZED PRODUCTS GROUP</div>`)[0];
+            popup_2d61f653d1a610b1c3fa2a843488e754.setContent(html_7f8fe2a93aacecf319d8138eb2fc11d4);
+        
+
+        marker_9671e42d7c1ab2b9be024b988f8e2d30.bindPopup(popup_2d61f653d1a610b1c3fa2a843488e754)
+        ;
+
+        
+    
+    
+            var marker_6ac735876a7b9d673630d58909e7d212 = L.marker(
+                [32.90339, -96.58226],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_e90840b6c93b178f58c4a7190f908ceb = L.popup({"maxWidth": "100%"});
+
+        
+            var html_c3089633cd0778b98a598e3788c14185 = $(`<div id="html_c3089633cd0778b98a598e3788c14185" style="width: 100.0%; height: 100.0%;">GLECO PLATING COMPANY</div>`)[0];
+            popup_e90840b6c93b178f58c4a7190f908ceb.setContent(html_c3089633cd0778b98a598e3788c14185);
+        
+
+        marker_6ac735876a7b9d673630d58909e7d212.bindPopup(popup_e90840b6c93b178f58c4a7190f908ceb)
+        ;
+
+        
+    
+    
+            var marker_2f3e0f8e4860c1f7a38c09231ce375c4 = L.marker(
+                [32.90556, -96.66639],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_173227d6979af7fc72223bb5eeb86564 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_7bfd2cc941e1e2e323844e6ecb1753dc = $(`<div id="html_7bfd2cc941e1e2e323844e6ecb1753dc" style="width: 100.0%; height: 100.0%;">ENGINEERED POLYMER SOLUTIONS INC D/B/A VALSPAR COATINGS</div>`)[0];
+            popup_173227d6979af7fc72223bb5eeb86564.setContent(html_7bfd2cc941e1e2e323844e6ecb1753dc);
+        
+
+        marker_2f3e0f8e4860c1f7a38c09231ce375c4.bindPopup(popup_173227d6979af7fc72223bb5eeb86564)
+        ;
+
+        
+    
+    
+            var marker_c6629b8726de7b3c6da6e30086e13b2b = L.marker(
+                [32.92196, -96.6378],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_d72cf793019b9addf5ce935913c763fd = L.popup({"maxWidth": "100%"});
+
+        
+            var html_0b63a8b0d732462b873c4e0a447144b9 = $(`<div id="html_0b63a8b0d732462b873c4e0a447144b9" style="width: 100.0%; height: 100.0%;">GARLAND PLANT</div>`)[0];
+            popup_d72cf793019b9addf5ce935913c763fd.setContent(html_0b63a8b0d732462b873c4e0a447144b9);
+        
+
+        marker_c6629b8726de7b3c6da6e30086e13b2b.bindPopup(popup_d72cf793019b9addf5ce935913c763fd)
+        ;
+
+        
+    
+    
+            var marker_5d8a8c24ff594b8b505ab1ef8a995f39 = L.marker(
+                [32.9402, -96.455],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_6142644c12d0956db708a3fc0a6b1646 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_280f1e5fde2561c796574f7edfbfeb20 = $(`<div id="html_280f1e5fde2561c796574f7edfbfeb20" style="width: 100.0%; height: 100.0%;">THE WHITMORE MANUFACTURING</div>`)[0];
+            popup_6142644c12d0956db708a3fc0a6b1646.setContent(html_280f1e5fde2561c796574f7edfbfeb20);
+        
+
+        marker_5d8a8c24ff594b8b505ab1ef8a995f39.bindPopup(popup_6142644c12d0956db708a3fc0a6b1646)
+        ;
+
+        
+    
+    
+            var marker_8a0716861f64c07110f6d2fe69cb9edd = L.marker(
+                [32.95661, -96.70881],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_83353bf80a6d2d9e1cbaaf4cbd33978a = L.popup({"maxWidth": "100%"});
+
+        
+            var html_e9e5c573d63965400c4b6acea1efa2d4 = $(`<div id="html_e9e5c573d63965400c4b6acea1efa2d4" style="width: 100.0%; height: 100.0%;">CLEANPART SOUTH</div>`)[0];
+            popup_83353bf80a6d2d9e1cbaaf4cbd33978a.setContent(html_e9e5c573d63965400c4b6acea1efa2d4);
+        
+
+        marker_8a0716861f64c07110f6d2fe69cb9edd.bindPopup(popup_83353bf80a6d2d9e1cbaaf4cbd33978a)
+        ;
+
+        
+    
+    
+            var marker_54347669680c5b1500b5e6ed827d306c = L.marker(
+                [33.08056, -96.67861],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_3ded245b278feb242d96f4c9819ad012 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_215d3676658f29cadbc88f574a055dc1 = $(`<div id="html_215d3676658f29cadbc88f574a055dc1" style="width: 100.0%; height: 100.0%;">REACTION TECHNOLOGY EPI, LLC</div>`)[0];
+            popup_3ded245b278feb242d96f4c9819ad012.setContent(html_215d3676658f29cadbc88f574a055dc1);
+        
+
+        marker_54347669680c5b1500b5e6ed827d306c.bindPopup(popup_3ded245b278feb242d96f4c9819ad012)
+        ;
+
+        
+    
+    
+            var marker_c089f9cda0927a7077bdb9d625db71fc = L.marker(
+                [33.18093, -96.60464],
+                {}
+            ).addTo(map_844d426b7c0136e96a8e1aea39eebe2e);
+        
+    
+        var popup_05ee1bf129a51ddc2a1cd1ccdd628806 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_4223bf94ff449418f4617d865801635e = $(`<div id="html_4223bf94ff449418f4617d865801635e" style="width: 100.0%; height: 100.0%;">ENCORE WIRE LIMITED MCKINNEY FACILITY</div>`)[0];
+            popup_05ee1bf129a51ddc2a1cd1ccdd628806.setContent(html_4223bf94ff449418f4617d865801635e);
+        
+
+        marker_c089f9cda0927a7077bdb9d625db71fc.bindPopup(popup_05ee1bf129a51ddc2a1cd1ccdd628806)
+        ;
+
+        
+    
+</script>
